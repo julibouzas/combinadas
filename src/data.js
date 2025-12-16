@@ -1,0 +1,40 @@
+export const EVENTS_DB = {
+    easy: [
+        "Más de 2 corners en 15 min",
+        "Lateral mal sacado",
+        "Protesta al árbitro",
+        "Falta en mitad de cancha",
+        "Cambio de botines",
+        "Técnico gritando indicaciones",
+        "Jugador escupe al piso",
+        "Abrazo de gol",
+        "Pelota a la tribuna",
+        "Falso lateral",
+        "Manos en la cintura (cansancio)",
+        "Hincha enfocado comiendo",
+        "Bandera en offside",
+        "Arquero hace tiempo",
+        "Pase atrás al arquero",
+        "Pelotazo largo sin destino",
+        "Jugador se acomoda las medias",
+        "Primer plano al árbitro"
+    ],
+    hard: [
+        "Gol de cabeza",
+        "Penal cobrado",
+        "Tarjeta Roja",
+        "Gol anulado por VAR",
+        "Lesión (entra camilla)",
+        "Gol desde fuera del área",
+        "Gol en contra",
+        "Atajada mano a mano",
+        "Tiro libre al palo",
+        "Gol de tijera/chilena",
+        "Pelea entre jugadores",
+        "Invasión de campo",
+        "Corte de luz",
+        "Árbitro se lesiona",
+        "Gol del arquero",
+        "Dos goles en 5 minutos"
+    ]
+};
