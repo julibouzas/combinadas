@@ -1,9 +1,18 @@
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const httpServer = createServer(app);
+
+// Serve static files from the build directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
 const io = new Server(httpServer, {
     cors: {
         origin: "*", // Allow Vite client
@@ -11,7 +20,6 @@ const io = new Server(httpServer, {
     }
 });
 
-// Store state in memory (for prototype purposes)
 // rooms: { [roomId]: { players: { [socketId]: { name, ready, board: [], progress: 0 } }, status: 'lobby'|'playing' } }
 const rooms = {};
 
@@ -105,7 +113,12 @@ function getPublicPlayers(roomId) {
     }));
 }
 
-const PORT = 3000;
+// Handle SPA fallback
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+const PORT = process.env.PORT || 3000;
 httpServer.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
